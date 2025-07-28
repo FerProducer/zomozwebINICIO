@@ -21,7 +21,38 @@
   </script>
 
   <style>
-    /* Animaciones minimalistas y elegantes */
+     #cotizador-container .service {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#cotizador-container .service label {
+  flex: 1;
+  font-size: 1em;
+}
+
+#cotizador-container .service input[type="number"] {
+  width: 80px;
+  padding: 0.5rem;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #cotizador-container .service {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #cotizador-container .service input[type="number"] {
+    width: 100%;
+  }
+}
 
     /* Fade + slide from bottom */
     @keyframes fadeSlideUp {
@@ -137,7 +168,6 @@
         <a href="#inicio" class="hover:text-red-500">Inicio</a>
         <a href="#nosotros" class="hover:text-red-500">Nosotros</a>
         <a href="#servicios" class="hover:text-red-500">Servicios</a>
-        <a href="#blog" class="hover:text-red-500">Blog</a>
         <a href="#galeria" class="hover:text-red-500">Galería</a>
         <a href="#contacto" class="hover:text-red-500">Contacto</a>
       </nav>
@@ -158,40 +188,15 @@
         class="mt-6 inline-block bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-300 btn-animate fade-slide-up-delay-2">Contáctanos</a>
     </div>
   </section>
-
-  <!-- Nosotros -->
-  <section id="nosotros" class="py-16 bg-gray-100 fade-slide-up">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-3xl font-bold mb-6 gentle-pulse">Sobre ZOMOZ</h2>
-      <p class="text-lg">ZOMOZ es un colectivo de arte multidisciplinario que fusiona lo visual con lo sonoro. Nacimos para
-        desafiar lo común. Creamos experiencias visuales y auditivas en un entorno profesional, humano y con visión
-        futurista.</p>
-    </div>
-  </section>
-
-  <!-- Galería -->
-  <section id="galeria" class="py-16 bg-white fade-slide-up-delay">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-12 gentle-pulse">Galería</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <img src="https://github.com/FerProducer/zomozwebINICIO/blob/main/Lalo.png?raw=true" alt="Proyecto 1"
-          class="w-full h-auto rounded shadow-md btn-animate" />
-        <img src="https://github.com/FerProducer/zomozwebINICIO/blob/main/Fercha%204.png?raw=true" alt="Proyecto 2"
-          class="w-full h-auto rounded shadow-md btn-animate" />
-        <img src="https://github.com/FerProducer/zomozwebINICIO/blob/main/Fer%20portada.png?raw=true" alt="Proyecto 3"
-          class="w-full h-auto rounded shadow-md btn-animate" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Servicios -->
+  
+   <!-- Servicios -->
   <section id="servicios" class="py-16 fade-slide-up-delay-2">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-12 gentle-pulse">Servicios</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white p-6 rounded shadow hover:shadow-lg btn-animate">
           <h3 class="text-xl font-semibold mb-2">Estudio de Grabación</h3>
-          <p>Grabación, mezcla, mastering y producción musical profesional.</p>
+          <p>Grabación de spots publicitarios y jinggles para video promocionales o radio.</p>
         </div>
         <div class="bg-white p-6 rounded shadow hover:shadow-lg btn-animate">
           <h3 class="text-xl font-semibold mb-2">Diseño Web Profesional</h3>
@@ -199,28 +204,127 @@
         </div>
         <div class="bg-white p-6 rounded shadow hover:shadow-lg btn-animate">
           <h3 class="text-xl font-semibold mb-2">Producción Audiovisual</h3>
-          <p>Videos musicales, contenido publicitario, branding visual y diseño gráfico.</p>
+          <p>Videos comerciales, contenido publicitario, branding visual y diseño gráfico.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Blog -->
-  <section id="blog" class="py-16 bg-gray-50 fade-slide-up-delay-3">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-12 gentle-pulse">Últimas Noticias</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded shadow btn-animate">
-          <h3 class="text-lg font-semibold">5 claves para una producción exitosa</h3>
-          <p class="text-sm mt-2 text-gray-600">Publicado el 24 de junio de 2025</p>
-          <p class="mt-4">Descubre consejos esenciales para llevar tu música al siguiente nivel desde el estudio.</p>
-        </div>
-        <div class="bg-white p-6 rounded shadow btn-animate">
-          <h3 class="text-lg font-semibold">Tendencias en diseño web moderno</h3>
-          <p class="text-sm mt-2 text-gray-600">Publicado el 18 de junio de 2025</p>
-          <p class="mt-4">Explora cómo los sitios web creativos están marcando la diferencia en la experiencia de usuario.</p>
-        </div>
+  
+ <button onclick="toggleCotizador()" style="margin: 1em 0; padding: 1em; background: #000; color: #fff; border: none; border-radius: 8px; width: 100%; font-weight: bold; font-size: 1em; cursor: pointer;">
+    📋 Cotizar un Proyecto
+  </button>
+
+  <div id="cotizador-container" style="display:none; background:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:800px; margin:auto;">
+    <h3 style="font-family:Impact, sans-serif; letter-spacing:0.5px; font-size:2em; margin-bottom:0.2em;">Punto Cero</h3>
+    <h4 style="font-family:Calibri, sans-serif; font-size:1.2em; font-weight:normal; margin-bottom:1.5em;">ZOMOZ Estudio Creativo - YOSOY Studio</h4>
+
+    <form id="cotizador-form">
+      <div class="service">
+        <label>🎙️ Spot Publicitario (Jinggle)</label>
+        <input type="number" min="0" value="0" data-price="1000" />
       </div>
+      <div class="service">
+        <label>🎸 Creación de logo</label>
+        <input type="number" min="0" value="0" data-price="600" />
+      </div>
+      <div class="service">
+        <label>🎚️ Comercial para redes sociales</label>
+        <input type="number" min="0" value="0" data-price="1100" />
+      </div>
+      <div class="service">
+        <label>🎧 Branding COMPLETO</label>
+        <input type="number" min="0" value="0" data-price="2700" />
+      </div>
+      <div class="service">
+        <label>🎼 Creacion de sitio Web para empresas</label>
+        <input type="number" min="0" value="0" data-price="2700" />
+      </div>
+      <div class="service">
+        <label>🎥 Video para Reel</label>
+        <input type="number" min="0" value="0" data-price="400" />
+      </div>
+      <div class="service">
+        <label>🌐 Landing Page Para Venta de Producto</label>
+        <input type="number" min="0" value="0" data-price="1200" />
+      </div>
+
+       <div style="text-align: right; font-size: 1.2em; margin-top: 1.5rem; line-height: 1.5;">
+  <strong>Total:</strong><br />
+  <span style="text-decoration: line-through; color: #888;" id="total">$0 MXN</span><br />
+  <strong style="font-size: 1.3em; color: #000;">
+    <span id="totalConDescuento">$0 MXN</span>
+    <span style="color: green; font-size: 0.9em;">(-15%)</span>
+  </strong>
+</div>
+
+
+
+    <p style="font-size: 0.7em; color: #555; margin-top: 1rem; text-align: center;">
+  Descuento de temporada del 15% exclusivo. Aplican términos y condiciones al servicio.
+</p>
+
+
+
+      <button type="button" onclick="enviarCotizacion()" style="margin-top:2rem; background:#000; color:#fff; border:none; padding:1rem; width:100%; border-radius:8px; font-weight:bold; cursor:pointer;">Solicitar Cotización vía WhatsApp</button>
+
+      <button type="button" onclick="usarCotizacion()" style="margin-top:1rem; background:#25d366; color:#fff; border:none; padding:0.8rem; width:100%; border-radius:8px; font-weight:bold; cursor:pointer;">
+  💸 Simular Financiamiento con esta Cotización
+</button>
+
+<section id="financiamiento" style="margin-top: 3rem;">
+  <div style="background:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:800px; margin:auto;">
+    <h3 style="font-family:Impact, sans-serif; letter-spacing:0.5px; font-size:2em; margin-bottom:0.2em;">Punto Cero</h3>
+    <h4 style="font-family:Calibri, sans-serif; font-size:1.2em; font-weight:normal; margin-bottom:1.5em;">Simulador de Financiamiento</h4>
+
+    <form id="simulador-form">
+      <label>Monto del Proyecto (MXN)</label>
+      <input type="number" id="monto" placeholder="Ej. 10,000" required min="500" style="width: 100%; margin-bottom: 1em;" />
+
+      <label>Plazo (meses)</label>
+      <select id="plazo" style="width: 100%; margin-bottom: 1em;">
+        <option value="3">3 meses</option>
+        <option value="6">6 meses</option>
+        <option value="9">9 meses</option>
+        <option value="12">12 meses</option>
+        <option value="18">18 meses</option>
+        <option value="24">24 meses</option>
+      </select>
+
+
+    <p style="font-size: 0.7em; color: #555; margin-top: 1rem;">
+      En los proyectos menores a $5,000.00 MXN, el plazo de pago se limita a 3 meses y la tasa al 25% minimo.
+    </p>
+      
+      <label>Tasa de interés anual (%)</label>
+      <input type="number" id="tasa" value="18" required min="0" step="0.1" style="width: 100%; margin-bottom: 1em;" />
+
+      <button type="button" onclick="calcularFinanciamiento()" style="background:#000; color:#fff; border:none; padding:1rem; width:100%; border-radius:8px; font-weight:bold; cursor:pointer;">Calcular Financiamiento</button>
+    </form>
+
+    <div id="resultado-financiamiento" style="margin-top: 2rem; display: none;">
+      <p><strong>Mensualidad estimada:</strong> <span id="mensualidad" style="font-size:1.3em;"></span></p>
+      <p><strong>Total a pagar:</strong> <span id="total-pagar"></span></p>
+      <p><strong>Intereses aproximados:</strong> <span id="intereses"></span></p>
+      <p style="font-size: 0.8em; color: #555;">Sujeto a aprobación y condiciones del estudio.</p>
+    </div>
+  </div>
+</section>
+      
+      <p style="text-align:center; font-size:0.9em; margin-top:1rem;">
+        📞 Teléfono directo: <a href="tel:6391342577">639 134 2577</a>
+      </p>
+    </form>
+  </div>
+</section>
+  
+  <!-- Nosotros -->
+  <section id="nosotros" class="py-16 bg-gray-100 fade-slide-up">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-bold mb-6 gentle-pulse">Sobre ZOMOZ</h2>
+      <p class="text-lg">ZOMOZ es una agencia de Branding enfocada en elevar tu negocio al siguiente nivel. Nacimos para
+        desafiar lo común. Creamos experiencias visuales en un entorno profesional, humano y con visión
+        futurista.</p>
     </div>
   </section>
 
@@ -263,12 +367,12 @@
       <div class="mt-6 text-center">
         <p class="text-lg">WhatsApp: <a href="https://wa.me/5216391342577" target="_blank" rel="noopener"
             class="text-red-600">+52 1 639 134 2577</a></p>
-        <p>Dirección: Calle 8a Pte. 1706, Poniente, 33000<br />Delicias, Chihuahua, México</p>
+        <p>Calle 8a Pte. 1706, Poniente, 33000<br />Delicias, Chih. México</p>
         <div class="mt-4">
           <iframe
             class="w-full h-64 rounded"
             loading="lazy"
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3516.6490527810765!2d-105.4919873245154!3d28.18758667591061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86eb15004e8a1759%3A0x88c2c751559d3273!2sPunto%20Cero%20Studios!5e0!3m2!1ses-419!2smx!4v1753224251735!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1832.9882217172174!2d-105.49013300710686!3d28.18787889624953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86eb15004e8a1759%3A0x88c2c751559d3273!2sPunto%20Cero%20Studios!5e0!3m2!1ses-419!2smx!4v1753670402297!5m2!1ses-419!2smx"
             allowfullscreen
           ></iframe>
         </div>
@@ -283,6 +387,163 @@
         class="underline hover:text-red-500 transition-colors duration-300">Términos y condiciones</a></p>
   </footer>
 
+   <script>
+  function toggleCotizador() {
+    const cont = document.getElementById('cotizador-container');
+    cont.style.display = cont.style.display === 'none' ? 'block' : 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const cotizadorInputs = document.querySelectorAll('#cotizador-form .service input[type="number"]');
+    const totalOriginalSpan = document.getElementById('total'); // ID corregido
+    const totalDescuentoSpan = document.getElementById('totalConDescuento'); // ID corregido
+
+    function actualizarTotal() {
+      let total = 0;
+      cotizadorInputs.forEach(input => {
+        const cantidad = parseInt(input.value) || 0;
+        const precio = parseFloat(input.dataset.price) || 0;
+        total += cantidad * precio;
+      });
+
+      const descuento = total * 0.15;
+      const totalConDescuento = total - descuento;
+
+      totalOriginalSpan.textContent = `$${total.toLocaleString()} MXN`;
+      totalDescuentoSpan.textContent = `$${totalConDescuento.toLocaleString()} MXN`;
+    }
+
+    cotizadorInputs.forEach(input => {
+      input.addEventListener('input', actualizarTotal);
+    });
+
+   window.enviarCotizacion = function () {
+  let mensaje = "¡Hola Punto Cero Studios! 👋\nQuiero una cotización con los siguientes servicios:\n";
+  let total = 0;
+
+  cotizadorInputs.forEach(input => {
+    const cantidad = parseInt(input.value) || 0;
+    const precio = parseInt(input.dataset.price);
+    if (cantidad > 0) {
+      const label = input.parentElement.querySelector('label').textContent;
+      mensaje += `• ${label}: ${cantidad} x $${precio} = $${cantidad * precio}\n`;
+      total += cantidad * precio;
+    }
+  });
+
+  if (total === 0) {
+    alert('Por favor selecciona al menos un servicio para cotizar.');
+    return;
+  }
+
+  const descuento = total * 0.15;
+  const totalConDescuento = total - descuento;
+
+  mensaje += `\n🔻 Descuento aplicado: -$${descuento.toFixed(2)} MXN`;
+  mensaje += `\n💳 Total con descuento: $${totalConDescuento.toFixed(2)} MXN`;
+  mensaje += `\n\n*Aplicable bajo terminos y condiciones al servicio.`;
+
+  const whatsappURL = `https://wa.me/5216391342577?text=${encodeURIComponent(mensaje)}`;
+  window.open(whatsappURL, "_blank");
+};
+
+  });
+</script>
+
+<script>
+  function usarCotizacion() {
+    const totalTexto = document.getElementById("totalConDescuento").textContent;
+    const totalNumerico = parseFloat(totalTexto.replace(/[^0-9.]/g, ""));
+
+    if (!isNaN(totalNumerico) && totalNumerico > 0) {
+      const inputMonto = document.getElementById("monto");
+      inputMonto.value = totalNumerico;
+
+      validarMonto();
+
+      const simuladorSection = document.getElementById("financiamiento");
+      simuladorSection.scrollIntoView({ behavior: "smooth" });
+      inputMonto.focus();
+    } else {
+      alert("Por favor realiza primero una cotización válida.");
+    }
+  }
+
+  function calcularFinanciamiento() {
+    const monto = parseFloat(document.getElementById("monto").value);
+    const plazo = parseInt(document.getElementById("plazo").value);
+    let tasaAnual = parseFloat(document.getElementById("tasa").value);
+
+    if (isNaN(monto) || isNaN(plazo) || isNaN(tasaAnual)) {
+      alert("Por favor completa todos los campos correctamente.");
+      return;
+    }
+
+    if (tasaAnual < 15) {
+      tasaAnual = 15;
+      document.getElementById("tasa").value = tasaAnual;
+    }
+
+    const tasaMensual = tasaAnual / 12 / 100;
+    const mensualidad = monto * (tasaMensual / (1 - Math.pow(1 + tasaMensual, -plazo)));
+    const totalPagar = mensualidad * plazo;
+    const intereses = totalPagar - monto;
+
+    document.getElementById("mensualidad").textContent = `$${mensualidad.toFixed(2)} MXN`;
+    document.getElementById("total-pagar").textContent = `$${totalPagar.toFixed(2)} MXN`;
+    document.getElementById("intereses").textContent = `$${intereses.toFixed(2)} MXN`;
+    document.getElementById("resultado-financiamiento").style.display = "block";
+  }
+
+  function validarMonto() {
+    const monto = parseFloat(document.getElementById("monto").value);
+    const tasa = document.getElementById("tasa");
+    const plazo = document.getElementById("plazo");
+
+    Array.from(plazo.options).forEach(opt => opt.disabled = false);
+
+    if (!isNaN(monto)) {
+      if (monto <= 5000) {
+        tasa.value = 25;
+        tasa.readOnly = true;
+        plazo.value = "3";
+        plazo.disabled = true;
+      } else {
+        tasa.readOnly = false;
+
+        // Ajustar tasa mínima y máxima válidas
+        let tasaActual = parseFloat(tasa.value);
+        if (tasaActual < 15) tasa.value = 15;
+        if (tasaActual > 25) tasa.value = 25;
+
+        plazo.disabled = false;
+
+        Array.from(plazo.options).forEach(option => {
+          const val = parseInt(option.value);
+          if (monto <= 12000 && (val === 18 || val === 24)) {
+            option.disabled = true;
+            if (plazo.value == val.toString()) plazo.value = "12";
+          }
+        });
+      }
+    }
+  }
+
+  document.getElementById("monto").addEventListener("input", validarMonto);
+
+  // Verifica también que la tasa nunca sea menor a 15 al editar manualmente
+  document.getElementById("tasa").addEventListener("input", () => {
+    const tasa = document.getElementById("tasa");
+    if (parseFloat(tasa.value) < 15) {
+      tasa.value = 15;
+    }
+    if (parseFloat(tasa.value) > 25) {
+      tasa.value = 25;
+    }
+  });
+</script>
+
+  
   <script>
     function enviarWhatsApp(event) {
       event.preventDefault(); // evitar envío normal del formulario
